@@ -1,0 +1,45 @@
+---
+
+- hosts: all
+  become: yes
+  pre_tasks:
+
+  - name:  Update and Upgrade the Slave Node
+    apt:
+      update_cache: 'yes'
+      upgrade: 'yes'
+
+  - name:  Cron Job - Check Server Uptime every 12AM
+    cron:
+      name: Cron Job - Check Server Uptime every 12AM
+      minute: "0"
+      hour: "0"
+      day: "*"
+      month: "*"
+      weekday: "*"
+      job: "/usr/bin/uptime > /var/log/uptime_check.log 2>&1"
+      state: present
+    vars:
+      ansible_become: true 
+  
+  - name: Copy the Laravel Script to the Slave Node
+    copy:
+      src: "{{ playbook_dir }}/files/slave.sh"
+      dest: ~/
+      owner: root
+      group: root
+      mode: 0744
+
+
+  - name: Set execute permissions on the Laravel Script
+    file:
+      path: ~/slave.sh
+      mode: "u+x"
+      state: file
+
+
+  - name: Run Laravel Script
+    command: bash ~/slave.sh emma emma90 < /dev/null
+    args:
+      warn: false
+    
