@@ -1,2 +1,3 @@
 .vagrant/machines
 .vagrant/rgloader
+.vagrant\machines\master\virtualbox\private_key
