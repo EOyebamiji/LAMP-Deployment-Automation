@@ -12,9 +12,6 @@ Vagrant.configure("2") do |config|
     end
 
   # Master provisioner block with an external script
-  #master.vm.provision "shell", path: "test.sh", args => "'first arg' second", env: {"DEBIAN_FRONTEND" => "noninteractive"}, privileged: false, run: "always"
-
-  #master.vm.provision "shell", path: "/execute.sh", args: "'emma' emma90", env: {"DEBIAN_FRONTEND" => "noninteractive"}, privileged: false, run: "always"
   master.vm.provision "shell", path: "execute.sh", env: {"DEBIAN_FRONTEND" => "noninteractive"}, privileged: true, run: "always"
 
   end
