@@ -1,6 +1,4 @@
-# AltSchool SOE: Cloud Engineering Second Semester Examination Project
-
-## Automating The Provisioning and Deployment of a LAMP Stack Deployment on Two (2) Ubuntu-Based Server
+# Automating The Provisioning and Deployment of a LAMP Stack Deployment on Two (2) Ubuntu-Based Server
 
 ## Project Objective
 
